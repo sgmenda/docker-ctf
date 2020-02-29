@@ -1,5 +1,8 @@
 # docker-ctf
 
+[![Build Status](https://travis-ci.com/sgmenda/docker-ctf.svg?branch=master)](https://travis-ci.com/sgmenda/docker-ctf)
+![Docker Image CI](https://github.com/sgmenda/docker-ctf/workflows/Docker%20Image%20CI/badge.svg)
+
 Dockerfiles for CTFs.
 
 Images:
