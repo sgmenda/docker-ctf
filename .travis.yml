@@ -8,5 +8,4 @@ before_install:
     - docker image ls
     - docker run --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name minimalctf -i minimalctf:ubuntu19.10
     - docker container ls
-    - docker exec -it minimalctf /bin/echo it works
 
