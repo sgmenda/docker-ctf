@@ -18,3 +18,11 @@ jobs:
       run: docker run --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name minimalctf -i minimalctf:ubuntu19.10
     - name: List Docker containers
       run: docker container ls
+    - name: Build the pwndbg Docker image
+      run: docker build -t pwndbg:ubuntu19.10 ./pwndbg/
+    - name: List Docker images
+      run: docker image ls
+    - name: Create a container from the pwndbg Docker image
+      run: docker run --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name pwndbg -i pwndbg:ubuntu19.10
+    - name: List Docker containers
+      run: docker container ls

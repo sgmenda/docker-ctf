@@ -1,11 +1,17 @@
-language: python
-
 services:
     - docker
 
-before_install:
+script:
     - docker build -t minimalctf:ubuntu19.10 ./minimalctf/
     - docker image ls
     - docker run --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name minimalctf -i minimalctf:ubuntu19.10
+    - docker container ls
+    - docker build -t pwndbg:ubuntu19.10 ./pwndbg/
+    - docker image ls
+    - docker run --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name pwndbg -i pwndbg:ubuntu19.10
+    - docker container ls
+
+after_script:
+    - docker image ls
     - docker container ls
 
