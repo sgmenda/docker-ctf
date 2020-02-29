@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the minimalctf Docker image
+      run: docker build -t minimalctf:ubuntu19.10 ./minimalctf/
+    - name: List Docker images
+      run: docker image ls
+    - name: Create a container from the minimalctf Docker image
+      run: docker run --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name minimalctf -i minimalctf:ubuntu19.10
+    - name: List Docker containers
+      run: docker container ls
+    - name: Execuate a simple command inside the container
+      run: docker exec -it minimalctf /bin/echo it works
