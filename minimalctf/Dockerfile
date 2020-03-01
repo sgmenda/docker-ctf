@@ -33,6 +33,8 @@ RUN apt-get install --assume-yes build-essential strace ltrace curl wget gcc
 
 RUN apt-get install --assume-yes vim gdb git
 
+RUN apt-get install --assume-yes netcat
+
 # Create user and set working dir to user's home directory
 RUN useradd --create-home --shell /bin/bash haxor
 WORKDIR /home/haxor
